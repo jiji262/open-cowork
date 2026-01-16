@@ -1,0 +1,164 @@
+@import "tailwindcss";
+@import "highlight.js/styles/github.css";
+
+@theme {
+  /* Surface colors */
+  --color-surface: #FCFBF8;
+  --color-surface-secondary: #F3F0EA;
+  --color-surface-tertiary: #EAE4DB;
+  --color-surface-cream: #FDFBF7;
+  --color-panel: #FFFFFF;
+  --color-panel-muted: #F7F4EE;
+
+  /* Ink colors */
+  --color-ink-900: #1C1916;
+  --color-ink-800: #2A2622;
+  --color-ink-700: #4B4640;
+  --color-ink-600: #67615B;
+  --color-ink-500: #7D756E;
+  --color-ink-400: #9B948C;
+
+  /* Muted colors */
+  --color-muted: #6F6A64;
+  --color-muted-light: #9B948C;
+
+  /* Accent colors */
+  --color-accent: #C96B43;
+  --color-accent-hover: #B85F3A;
+  --color-accent-light: #F2D2C2;
+  --color-accent-subtle: #FEF3ED;
+
+  /* Status colors */
+  --color-error: #D0453A;
+  --color-error-light: #FDE7E2;
+  --color-success: #1F8E5A;
+  --color-success-light: #D7F2E1;
+  --color-info: #2F6FE4;
+  --color-info-light: #E0EBFF;
+
+  /* Background colors */
+  --color-bg-000: #FFFFFF;
+  --color-bg-100: #FDFBF7;
+  --color-bg-200: #F3F0EA;
+  --color-bg-300: #EAE4DB;
+  --color-bg-400: #DFD8CF;
+
+  /* Shadows */
+  --shadow-soft: 0 1px 2px rgba(28, 25, 22, 0.06);
+  --shadow-card: 0 6px 18px rgba(28, 25, 22, 0.08);
+  --shadow-elevated: 0 10px 32px rgba(28, 25, 22, 0.12);
+}
+
+pre code.hljs {
+  background: transparent;
+  padding: 0;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+body {
+  font-family: "Avenir Next", "IBM Plex Sans", "PingFang SC", "Hiragino Sans", "Noto Sans CJK SC", "Segoe UI", sans-serif;
+  background-color: var(--color-surface);
+  color: var(--color-ink-900);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+hr {
+  height: 1px;
+  margin: 1.5rem 0;
+  border: 0;
+  background-color: var(--color-ink-900);
+  opacity: 0.1;
+}
+
+@media (max-width: 768px) {
+  input, textarea, select {
+    font-size: 16px;
+  }
+}
+
+code, pre, textarea.mono, input.mono {
+  font-family: "JetBrains Mono", "Iosevka", "SFMono-Regular", "Menlo", "Consolas", monospace;
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #D1D1CC;
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #9B9B96;
+}
+
+.app-shell {
+  background-image:
+    radial-gradient(1200px circle at 5% -10%, rgba(201, 107, 67, 0.18), transparent 45%),
+    radial-gradient(1000px circle at 90% 0%, rgba(47, 111, 228, 0.12), transparent 45%),
+    linear-gradient(180deg, #FDFBF7 0%, #F7F4EE 45%, #F2EEE6 100%);
+}
+
+.app-shell::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(28, 25, 22, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(28, 25, 22, 0.04) 1px, transparent 1px);
+  background-size: 36px 36px;
+  opacity: 0.35;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.message-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.message-card {
+  animation: rise 0.35s ease both;
+}
+
+.header {
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+}
+
+/* Shimmer animation for partial message loading */
+@keyframes shimmer {
+  0% { transform: translateX(-120%); }
+  100% { transform: translateX(120%); }
+}
+
+.animate-shimmer {
+  animation: shimmer 1.4s linear infinite;
+}
+
+@keyframes rise {
+  0% {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
